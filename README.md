@@ -1,6 +1,15 @@
 # team_quandt_internal
 repository for our internal workshop
 
+# folder structure and guidelines
+I propose the following folder structure and guidelines:
+- continuous numbering by order of workshops (e.g. the first workshop folder starts with '01-...' etc.) plus a short descriptive name (e.g. 01-intro for the first workshop folder etc.)
+- within the workshop folder a folder for each programming language used and scripts within that
+- a 'data' folder for every workshop
+- create short data examples within the script and use publicly available/downloadable datasets wherever possible to keep the repo size down (e.g. iris data set for machine learning or cars dataset for regression)
+- if larger datasets are required (e.g. for images or large text corpora), host them on cloud services (please respect copyrights) or distribute them beforehand
+- feel free to add something to the README.md file or send it to me and I will add it
+
 # 12.06.2023
 ## prerequisites:
 ### first read the steps below
@@ -34,3 +43,10 @@ repository for our internal workshop
 ### using colab instead:
 - if you don't have one, create a google account
 - links to the colabs used in the workshop will be posted here later
+
+## workshop structure
+1. we will start with very basic R programming to get everyone up to speed and/or repeat the basics (esp. functions an loops) and get through that according to the groups proficiency with R
+2. A short introduction into the "tidyverse", a widely used data handling environment package
+3. Some extended work with dataframes follows, including inspection, cleaning, filtering and light visualization
+4. We do the equivalents of the above in Python
+5. If we have time, we will look into the basics of git and discuss possible workflows and where to go from here
