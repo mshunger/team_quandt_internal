@@ -51,3 +51,6 @@ rsconnect/
 # MacOS specifics
 */.DS_Store
 *.DS_Store
+
+# exclude "local" folders everywhere
+*/local
