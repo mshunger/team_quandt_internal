@@ -17,7 +17,7 @@ I propose the following folder structure and guidelines:
   - for the workshop I recommend to install R/R-Studio but to use colab for python (because we focus on R)
 - if you want to install stuff later and want to start coding directly look at the colab instructions
   - be aware of the following caveats regarding colab:
-    - it is google product, you need a google account
+    - it is a google product, you need a google account
     - it can be quite slow compared to a local install
     - it requires a stable internet connection
 - If you have any questions on the installation or want to troubleshoot, feel free to contact me beforehand or afterwards
