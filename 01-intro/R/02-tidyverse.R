@@ -84,7 +84,7 @@ mpg_df %>% filter(complete.cases(cyl))
 
 mpg_df %>% select(cty, hwy) # city and highway miles per gallon
 # negative selection:
-mpg_df %>%select(-manufacturer, -model)
+mpg_df %>% select(-manufacturer, -model)
 
 # you can also select columns by starting value or parts of the name:
 mpg_df %>% select(contains('r'))
@@ -111,6 +111,53 @@ mpg_df %>%
   arrange(manufacturer, model) %>% 
   view()
 
+# manipulating data -> mutate
+mpg_df %>%
+  mutate(c_diff = hwy - cty) %>% 
+  filter(c_diff >= 10) %>% 
+  # select(manufacturer, model, year, cty, hwy, c_diff, everything()) %>% 
+  view()
+# -> explain what happened here step by step
+
+# more data inspection and overview
+## general summary
+mpg_df %>% summary()
+## specific summary statistics
+mpg_df %>% 
+  summarize(
+    min_year = min(year),
+    max_year = max(year),
+    mean_cty = mean(cty),
+    mean_hwy = mean(hwy),
+    n_rows = n()
+  )
+
+## grouped summary statistics
+mpg_df %>% 
+  group_by(year) %>% 
+  summarize(
+    min_year = min(year),
+    max_year = max(year),
+    mean_cty = mean(cty),
+    mean_hwy = mean(hwy),
+    n_rows = n()
+  )
+
+### challenge ###
+# import the 'diamonds" data set included with ggplot2
+# 1 USD == 0.93 EUR
+diamond_df <- # ...
+
+# calculate prices in Euro 1 USD == 0.93 EUR and add as a column (EUR)
+# extract number of rows, min, max, mean and standard deviation (sd())
+# for carat and price (EUR) grouped by cut
+# save as a .csv file locally
+
+  
+  
+  
+  
+  
 
 
 
@@ -125,3 +172,69 @@ mpg_df %>%
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Challenge Solution ###
+diamond_df <- ggplot2::diamonds
+
+summaries <- diamond_df %>% 
+  filter(carat >= 0.25) %>% 
+  mutate(EUR = price * 0.93) %>% 
+  group_by(cut) %>% 
+  summarize(
+    min_EUR = min(EUR),
+    max_EUR = max(EUR),
+    mean_EUR = mean(EUR),
+    std_EUR = sd(EUR),
+    min_carat = min(carat),
+    max_carat = max(carat),
+    mean_carat = mean(carat),
+    std_carat = sd(carat),
+    n_rows = n()
+  )
+  
+write_csv(
+  summaries,
+  '/Users/ungers/git/team_quandt_internal/01-intro/local/diamond_sum.csv',
+)
+
+# can you include the write function in the piped block?

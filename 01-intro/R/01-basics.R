@@ -150,8 +150,7 @@ df2$all.cds <- df2$albums + df2$singles_ep + df2$splits
 print(df2$all.cds)
 
 # productivity: all.cds / (band age = this year - formed):
-df2$age <- 2023 - df2$formed
-df2$productivity <- df2$all.cds / df2$age
+01-basics
 mean(df2$productivity)
 max(df2$productivity)
 # what band is that?
@@ -164,21 +163,20 @@ summary(df2)
 
 # Data Export and import to csv
 ## but first: filepaths (windows, either use '\' or '//')
-fpath <- '/Users/ungers/Documents/save.csv' # explicit path
+fpath <- '/Users/ungers/git/team_quandt_internal/01-intro/local/save.csv' # explicit path
 fpath <- 'save.csv' # implicit path, starts from where we are, which is...
 getwd()
 # and if we want to specify where we actually work:
 setwd('/Users/ungers/Documents/') # or alternatively in my case: setwd('Documents')
 getwd() # -> this should be where you want to be now!
 
-# writing the dataframe as a csv-file, you can also use write.csv
-write.table(
+# writing the dataframe as a csv-file
+write.csv(
   df2,
   file = fpath, # use your path implicitly or explicitly
-  sep=',' # the separator, csv -> comma separated values, you can also use e.g. ; ignored here but used e.g. in write.table
 )
 
-load <- read.table(fpath, sep=',') # or, again, read.csv
+load <- read.csv(fpath, sep=',') # or, again, read.csv
 
 ### Important Programming ###
 # funtions and for-loops
