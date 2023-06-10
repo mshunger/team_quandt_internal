@@ -33,7 +33,7 @@ repository for our internal workshop
 
 ### using colab instead:
 - if you don't have one, create a google account
-- Python colab files can be viewed [here](https://drive.google.com/drive/folders/1-Sjt_kH9jh5Vd2xxpqzQ6Id-iWgvjIt6?usp=sharing)
+- Python colab files can be viewed [here](https://drive.google.com/drive/folders/1MDnlA6avyfwzohTGqFvS9Iq4bBCyKP46?usp=sharing)
 
 ## workshop structure
 1. we will start with very basic R programming to get everyone up to speed and/or repeat the basics (esp. functions an loops) and get through that according to the groups proficiency with R
