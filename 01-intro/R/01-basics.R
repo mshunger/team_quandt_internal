@@ -87,6 +87,19 @@ b <- FALSE # alternatively 'F'
 
 # --> variables containing just one values are called scalars!
 
+# we can also convert some of the types into eachother:
+a <- 1
+b <- as.character(a)
+print(a)
+print(b)
+
+a <- '100'
+b <- as.numeric(a)
+print(a)
+print(b)
+
+# try to convert 'test' to numeric!
+
 # containers: variables to keep variables
 vec <- c(1,2,3) # -> initiallized with c(), 'atomic'; converts implicitly
 print(vec)
@@ -128,6 +141,18 @@ ids <- c(1,2,3,4,5)
 name <- c('Maja', 'Flip', 'Thekla', 'Willi', 'Puck')
 age <- c(5, 10, 20, 5, 2)
 type <- c('bee', 'grasshopper', 'spider', 'bee', 'fly')
+
+# a word on code formatting:
+# R is not very strict with indentation, spaces etc. which means that we have
+# to hold ourselves to our own standards. My personal preference is readability
+# and not having extremely long lines -> I often write code indented and in 
+# "high" rather than "long" blocks, an example:
+exp <- c(c(1,2,3,4,5,6,7), c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+# can also be written like this:
+exp <- c(
+  c(1,2,3,4,5,6,7),
+  c('a', 'b', 'c', 'd', 'e', 'f', 'g')
+)
 
 df <- data.frame(
   ids,
@@ -176,7 +201,10 @@ new <- data.frame(
   splits <- c(2),
   formed <- c(1995)
 )
-names(new) <- c('id', 'name', 'country', 'albums', 'singles_ep', 'splits', 'formed')
+names(new) <- c(
+  'id', 'name', 'country', 'albums',
+  'singles_ep', 'splits', 'formed'
+)
 
 df2 <- rbind(df2, new)
 
