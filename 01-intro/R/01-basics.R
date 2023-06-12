@@ -49,11 +49,43 @@ int <- 5L
 comp <- 5.0 + 3i
 # string
 st <- 'hello world'
+st <- "hello world"
+st <- 'hello "world"'
+st <- "hello world, it's me!"
+
+# neat string formatting: cat()
+st <- 'hello
+world
+with
+breaks'
+print(st)
+
+cat(st)
+
+# combining strings: paste()
+a <- 'hello'
+b <- 'world'
+print(c(a, b))
+
+paste(a, b) # , sep='; ')
+
+# search in strings: grepl()
+st <- 'here is a longer string with names: Maja, Flip, Thekla'
+grepl('Maja', st) # Maja is in the string!
+
+# length of strings: nchar()
+nchar(st)
+
+# editing strings: gsub()
+willi <- gsub('Maja', 'Willi', st)
+print(willi)
 
 # logical aka boolean
 a <- TRUE # alternatively 'T'
 b <- FALSE # alternatively 'F'
 ## try a + a, what happens?
+
+# --> variables containing just one values are called scalars!
 
 # containers: variables to keep variables
 vec <- c(1,2,3) # -> initiallized with c(), 'atomic'; converts implicitly
@@ -89,6 +121,9 @@ class(vec) # -> numeric vector!
 class(lst)
 
 ### Dataframes ###
+# there are also matrices and arrays, but we substitute matrices by dataframes
+# and seldomly use arrays
+
 ids <- c(1,2,3,4,5)
 name <- c('Maja', 'Flip', 'Thekla', 'Willi', 'Puck')
 age <- c(5, 10, 20, 5, 2)
@@ -186,7 +221,6 @@ load <- read.csv(fpath, sep=',') # or, again, read.csv
 print('hello world!') # you are already using functions!
 write.csv('...')
 class('...')
-a <- paste('hello', 'world', sep='; ')
 
 # what if you want a specific function?
 # Google is your friend, maybe it already exists...if not, build your own!
@@ -239,7 +273,7 @@ if(cond == 2){
 # example: we want to multiply each number from 1 to 5 with itself
 
 # initiallize  # define container  # define tasks
-for            ()                  {}
+# for         ()                  {}
 
 for(i in 1:5){
   xp <- my_function(i, i)

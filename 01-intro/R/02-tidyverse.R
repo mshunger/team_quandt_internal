@@ -237,4 +237,4 @@ write_csv(
   '/Users/ungers/git/team_quandt_internal/01-intro/local/diamond_sum.csv',
 )
 
-# can you include the write function in the piped block?
+# can you include the write function in the piped block?x
