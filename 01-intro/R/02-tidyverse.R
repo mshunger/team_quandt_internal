@@ -39,8 +39,9 @@ mpg_df <- ggplot2::mpg # ggplot2 is included in the tidyverse
 
 # loading local data, intro dataset, replace your path!
 bands <- readr::read_csv(
-  '/Users/ungers/git/team_quandt_internal/01-intro/local/save.csv'
+  'save.csv'
 )
+
 # inspect the dataset!
 # drop the useless first row
 bands <- bands[,-1]
@@ -50,11 +51,14 @@ bands <- bands[,-1]
 # into functions etc.
 # to do this, we use the 'pipe' operator %>% 
 # it sometimes helps to read it as "and then"
-# tip: use cmd + shift + m (MacOS) or ctr + shift + m so you don't have to
+# tip: use cmd + shift + m (MacOS) or ctrl + shift + m so you don't have to
 # type it every time!
 # example: examining the top 2 rows of a dataframe 
 # or tibble (tidy datframe format), using the head() function
 bands %>% head(2)
+
+
+head(bands)
 
 ## filtering
 maja_df %>% filter(age == 5)
@@ -95,7 +99,7 @@ reorder <- mpg_df %>% select(cty, hwy, everything()) # how?
 reorder %>% head(10)
 
 # sorting:
-reorder %>% arrange(hwy) # try it with multiple variables
+reorder %>% arrange(desc(hwy)) # try it with multiple variables
 reorder %>% arrange(desc(year))
 
 # chaining:
@@ -134,7 +138,7 @@ mpg_df %>%
 
 ## grouped summary statistics
 mpg_df %>% 
-  group_by(year) %>% 
+  group_by(manufacturer) %>% 
   summarize(
     min_year = min(year),
     max_year = max(year),
@@ -153,8 +157,6 @@ diamond_df <- # ...
 # for carat and price (EUR) grouped by cut
 # save as a .csv file locally
 
-  
-  
   
   
   
@@ -217,7 +219,7 @@ diamond_df <- # ...
 diamond_df <- ggplot2::diamonds
 
 summaries <- diamond_df %>% 
-  filter(carat >= 0.25) %>% 
+  # filter(carat >= 0.25) %>% 
   mutate(EUR = price * 0.93) %>% 
   group_by(cut) %>% 
   summarize(
@@ -230,8 +232,8 @@ summaries <- diamond_df %>%
     mean_carat = mean(carat),
     std_carat = sd(carat),
     n_rows = n()
-  )
-  
+)
+
 write_csv(
   summaries,
   '/Users/ungers/git/team_quandt_internal/01-intro/local/diamond_sum.csv',

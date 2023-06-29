@@ -2,6 +2,23 @@
 # to mark something as a comment, nothing precluded by this sign will be 
 # executed
 
+# few things about R Studio:
+# we have four Panes: 
+# Source (this one)
+# Console (output)/ Terminal
+# Environment/ History / other stuff
+# Files/ Plots/ Packages
+# You can sort them how you want, default is
+# Source  | Environment
+# ---------------------
+# Console | Files
+# but I personally see more sense in
+# Source      | Console
+# ---------------------
+# Environment | Files
+# because Source (input) -> Console (output)
+# and we can of course customize the appearance (e.g. for "Dark Mode")
+
 ### The very basics ###
 
 # R is a calculator!
@@ -50,7 +67,9 @@ comp <- 5.0 + 3i
 # string
 st <- 'hello world'
 st <- "hello world"
+
 st <- 'hello "world"'
+print(st)
 st <- "hello world, it's me!"
 
 # neat string formatting: cat()
@@ -129,7 +148,10 @@ vec[2] <- 5
 print(vec)
 
 # checking datatypes:
+a <- 1
+b <- '1'
 class(a)
+class(b)
 class(vec) # -> numeric vector!
 class(lst)
 
@@ -160,6 +182,7 @@ df <- data.frame(
   age,
   type
 )
+View(df)
 
 # alternatively: df <- data.frame(ids, name, age, type); or:
 df_list <- list(ids, name, age, type)
@@ -172,7 +195,7 @@ df$name # also check what class that is!
 df[1] # -> what does that do?
 df[2,2] # row, column -> cell indexing
 # what if we want the name and age of the second character?
-df[2,2:3]
+df[1:3,2:3]
 
 # why dataframes? -> e.g. statistical operations like the mean age
 mean(df$age)
@@ -188,7 +211,7 @@ df2 <- data.frame(
   formed <- c(2003, 2015, 1991, 2015, 2014)
 )
 names(df2) <- c('id', 'name', 'country', 'albums', 'singles_ep', 'splits', 'formed')
-mean.albums <- mean(df2$albums)
+#mean.albums <- mean(df2$albums)
 print(mean.albums)
 
 # adding a new row:
@@ -213,12 +236,17 @@ df2$all.cds <- df2$albums + df2$singles_ep + df2$splits
 print(df2$all.cds)
 
 # productivity: all.cds / (band age = this year - formed):
-01-basics
+df2$age <- 2023 - df2$formed
+df2$productivity <- df2$all.cds / df2$age
+
 mean(df2$productivity)
 max(df2$productivity)
 # what band is that?
 
-df2[df2$productivity==max(df2$productivity),]
+df2[
+  df2$productivity<1
+  ,
+]
 
 # Further inspections
 str(df2)
@@ -228,10 +256,14 @@ summary(df2)
 ## but first: filepaths (windows, either use '\' or '//')
 fpath <- '/Users/ungers/git/team_quandt_internal/01-intro/local/save.csv' # explicit path
 fpath <- 'save.csv' # implicit path, starts from where we are, which is...
+
 getwd()
 # and if we want to specify where we actually work:
 setwd('/Users/ungers/Documents/') # or alternatively in my case: setwd('Documents')
+# Or you can set it via session -> Set working directory -> choose directory
 getwd() # -> this should be where you want to be now!
+
+write.csv(df2, 'save.csv')
 
 # writing the dataframe as a csv-file
 write.csv(
@@ -239,10 +271,10 @@ write.csv(
   file = fpath, # use your path implicitly or explicitly
 )
 
-load <- read.csv(fpath, sep=',') # or, again, read.csv
+load <- read.csv('save.csv', sep=',') # or, again, read.csv
 
 ### Important Programming ###
-# funtions and for-loops
+# functions and for-loops
 
 # Functions; typical functions
 # tip: click on the function name and press 'F1' (while using RStudio)
@@ -256,10 +288,13 @@ class('...')
 # name it  # tell it to be a function   # define inputs  # define tasks
 my_function <- function                 (inputs)         {tasks}
 
-my_function <- function(num, expo){
-  num <- num ** expo
-  return(num) # return the calculated value
+my_function <- function(base, expo){
+  if(expo < 10){
+    base <- base ** expo
+    return(base) # return the calculated value
+  }
 }
+my_function(3, 6)
 
 test <- my_function(2, 3)
 print(test)
@@ -270,7 +305,7 @@ print(test)
 # initiallize # define condition  # define tasks if condition holds
 if            (condition)         {tasks}
 
-cond <- 2
+cond <- 5
 if(cond == 2){
   print(paste(cond, 'equals', 2, sep=' '))
 }
@@ -304,7 +339,7 @@ if(cond == 2){
 # for         ()                  {}
 
 for(i in 1:5){
-  xp <- my_function(i, i)
+  xp <- my_function(i, 2)
   print(xp)
 }
 
