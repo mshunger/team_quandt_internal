@@ -29,6 +29,3 @@
 # amerindian?
 
 # save the dataframe with statewide populations counts and percentages as a .csv
-
-# in preparation for the next workshop:
-## go through the cleaning script (03-cleaning_viz.R) by yourselves!

@@ -95,6 +95,7 @@ geom_point()
 both %>% 
   group_by(name) %>% 
   arrange(published) %>% 
-  mutate(n_albums = row_number()) %>% ggplot(
+  mutate(n_albums = row_number()) %>% 
+  ggplot(
     aes(x=published, y=n_albums, color=name)
   ) + geom_line()
