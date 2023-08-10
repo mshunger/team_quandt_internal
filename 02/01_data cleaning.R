@@ -7,7 +7,7 @@
 #has contained these specific questions since 2015. 
 
 #But first - installing packages!
-#As you learnd in the last workshop, install.packages() is used to download and install the package 
+#As you learned in the last workshop, install.packages() is used to download and install the package 
 #(you only need to do this once on your computer) 
 #and library() is used to make the functions from this package available for use 
 #(required each session that you use the package).
@@ -32,7 +32,7 @@ library(car)
 #separated with commas; read.csv2 reads files in which columns are separated with semicolons. Otherwise 
 #these functions have the same structure. 
 
-data <- read_csv2('/Users/johanna/Desktop/team_quandt_internal-main/02/eurobarometer_dataframe.csv')
+data <- read_csv2('eurobarometer_dataframe.csv')
 
 ###PREVIEW THE DATA
 
@@ -109,7 +109,7 @@ table(data_ger_aut$country)
 #In this example, we want to create a new data frame that contains only participants from Finland 
 #and includes the variables "Age" and "Gender". 
 
-data_finland <- data[(data$country == "Germany"), c("age", "gender")]
+data_ger <- data[(data$country == "Germany"), c("age", "gender")]
 
 #Sorting data
 #In some cases, we may also want our data in a certain order - for example, numerically or alphabetically. 
@@ -154,8 +154,10 @@ table(data$occupation)
 data$occupation_edited <- data$occupation
 
 #We replace the value for selected cases
-data$occupation_edited[data$occupation_edited=="General management, etc."|
-    data$occupation_edited=="Middle management, etc."] <- "Management"
+data$occupation_edited[
+  data$occupation_edited=="General management, etc."|
+  data$occupation_edited=="Middle management, etc."
+] <- "Management"
                    
 table(data$occupation_edited)
 
@@ -214,6 +216,7 @@ sum(is.na(data_removed$support_refugees)) #have the missing values been deleted?
 #no missing values in any of the variables. This can be done with the command complete.cases():
 data_clean <- data[complete.cases(data),]
 sum(is.na(data_clean$support_refugees)) #have the missing values been deleted?
+sum(is.na(data_clean$support_migrants))
 
 
 

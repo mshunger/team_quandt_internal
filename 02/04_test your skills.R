@@ -4,6 +4,8 @@
 #1)
 #Are male pirates significantly taller than female pirates? 
 #Test this by conducting a t-test on the relevant data in the pirates dataset. 
+pirates <- pirates
+sub <- pirates %>% select(sex, height)
 
 #(Hint: You’ll have to select just the female and male pirates and remove the ‘other’ ones using subset() or filter())
 

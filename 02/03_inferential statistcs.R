@@ -100,6 +100,8 @@ chisq.test(pirates$college, pirates$headband)
 #1) Values between 0.1 and 0.3 are considered a low correlation,
 #2) values between 0.3 and 0.5 are considered a medium correlation, and
 #3) values above 0.5 are considered a strong correlation.
+install.packages("rcompanion")
+library(rcompanion)
 
 cramerV(x=pirates$college, y=pirates$headband)
 
@@ -138,7 +140,7 @@ cov(x=pirates$age, y=pirates$parrots)
 cor.test(formula = ~ age + parrots,data = pirates)
 
 # Method 2: Vector notation
-cor.test(x = pirates$age,y = pirates$parrots)
+cor.test(x = pirates$age, y = pirates$parrots)
 
 #Interpretation: 
 #The value at the bottom of the output (cor) is the Pearson correlation coefficient r. We also report the p-value (significance).
@@ -164,7 +166,7 @@ pirates %>%
   ggplot(aes(x=age, y=parrots, 
              color=sex, 
              shape=sex,)) +
-  geom_point(size=4) + 
+  geom_point(size=2) + 
   ggtitle("Scatterplot: Age and Parrots") +
   xlab("Age of Pirate") + 
   ylab("Number of Parrots")
