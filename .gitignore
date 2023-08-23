@@ -54,6 +54,7 @@ rsconnect/
 
 # exclude "local" folders everywhere
 */local
+*local
 
 # Python specific ignore
 *.ipynb_checkpoints
