@@ -1,7 +1,23 @@
 # team_quandt_internal
 repository for our internal workshop
 
-# 12.06.2023
+# 24.08.2023 - Machine Learning
+## info:
+- Homepage of [BERTopic](https://maartengr.github.io/BERTopic/index.html)
+- Homepage of [Huggingface](https://huggingface.co/) (for pretrained BERT models)
+## prerequisites:
+### install the following packages
+- `install.packages('devtools')`
+- `install_github("abresler/bertopic”)`
+- `install.packages('reticulate’)`
+### run the following lines of code
+- `reticulate::install_python()`
+- `reticulate::py_install('bertopic')` 
+- `reticulate::py_install('flair')`
+- `reticulate::py_install('scikit-learn==1.2.2')`
+- `reticulate::py_install('numpy==1.24')`
+
+# 12.06.2023 - Intro to R (and Python)
 ## prerequisites:
 ### first read the steps below
 - if you want to continue to use R/Python I recommend installing everything below (but you can also totally do that after the workshop :) )
