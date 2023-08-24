@@ -114,4 +114,4 @@ viz <- model$visualize_hierarchy()
 viz$write_html("/Users/ungers/git/team_quandt_internal/local/hierarchy.html")
 
 # the original python version is even more powerful supporting temporal modeling
-# and more!
+# soft clusterin*, and more!
