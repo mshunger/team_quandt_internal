@@ -5,7 +5,7 @@ library(ggvis)
 library(tidyverse)
 library(class)
 
-# the 'iris' dataset is an often used sample dataset for machine learing,
+# the 'iris' dataset is an often used sample dataset for machine learning,
 # especially classification. It contains 50 samples each of three iris varieties
 # and we can use data on petal and sepal size to classify the variety
 
@@ -34,12 +34,10 @@ df %>%
 ### normalization:
 
 norm <- function(col){
-  
   colmax <- max(col)
   colmin <-min(col)
   
   result <- (col-colmin)/(colmax-colmin)
-  
   result
 }
 
@@ -52,7 +50,7 @@ summary(df)
 
 ## 2. Train-Test Split
 # we need to make two things sure: we need to have enough training and test data,
-# the split should favor the test size to get a more accurate model, so 50/50 is
+# the split should favor the training size to get a more accurate model, so 50/50 is
 # not a good idea, maybe 67% training and 33% test. And second, the samples have
 # to be samples, we don't want to learn only from two varieties and then predict
 # the third, so shuffle your data :)
@@ -83,7 +81,7 @@ x_test <- test %>%
 
 # running the knn-algorithm with training and test data and separate 
 # training labels
-pred <- knn(x_train, x_test, y_train, k=3)
+pred <- class::knn(x_train, x_test, y_train, k=3)
 
 # evaluating the model: comparing prediction against the real labels
 tab <- table(pred, y_test)

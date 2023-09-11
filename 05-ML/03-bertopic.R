@@ -1,8 +1,9 @@
 # run this ahead of time!
 install.packages('devtools')
 install_github("abresler/bertopic")
-reticulate::install_python()
 install.packages('reticulate')
+library(reticulate)
+reticulate::install_python()
 reticulate::py_install('bertopic')
 reticulate::py_install('flair')
 reticulate::py_install('scikit-learn==1.2.2')
@@ -13,6 +14,9 @@ library(bertopic)
 library(dplyr)
 library(tidyverse)
 reticulate::import('flair')
+
+nltk <- reticulate::import('nltk')
+nltk$download('stopwords')
 
 import_bertopic()
 import_sentence_transformers()
@@ -72,15 +76,17 @@ doc_info <- bert_document_info(model, docs)
 view(doc_info)
 
 # predicting topics for "new" documents (random -> change values if necessary)
+rest$review_content[2]
+
 to_predict <- rest$review_content[2]
 to_predict
 
-predicted <- model$transform(pred)
+predicted <- model$transform(to_predict)
 predicted[1]
 
-topic_1 <- bert_topic_info(model, 1)
-topic_1$label_bertopic
-topic_1$text_representative_documents
+topic_6 <- bert_topic_info(model, 6)
+topic_6$label_bertopic
+topic_6$text_representative_documents
 
 
 # built in visualization

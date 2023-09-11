@@ -14,7 +14,7 @@ summary(mod)
 plot(df_run, 
      col = mod$cluster)
 
-# the core evaluation criterion for k-menas clustering is the "within cluster
+# the core evaluation criterion for k-means clustering is the "within cluster
 # sum of squares" which we are trying to minimize. This way we can compare 
 # multiple solutions (e.g. for "k")
 
@@ -38,7 +38,7 @@ tab
 
 # recode if necessary, 2 seems to be virginica and 3 seems to be versicolor
 iris$c_spec <- iris$cluster %>% 
-  recode('1'='setosa', '2'='virginica', '3'='versicolor')
+  recode('1'='versicolor', '2'='virginica', '3'='setosa')
 tab <- table(iris$Species, iris$c_spec)
 tab
 
